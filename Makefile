@@ -16,26 +16,26 @@ lint:
 	@golangci-lint run
 .PHONY: lint
 
-## build: Build the supply-server binary.
+## build: Build the ipinfo binary.
 build:
-	@echo "--> Building the binary and saving in bin/supply-server"
-	@go build -o bin/supply-server
+	@echo "--> Building the binary and saving in bin/ipinfo"
+	@go build -o bin/ipinfo
 .PHONY: build
 
 ## docker-build: Build a docker image. Requires docker to be installed.
 docker-build:
 	@echo "--> Building the docker image"
-	@docker build . --tag "celestiaorg/supply:latest"
+	@docker build . --tag "sysrex/ipinfo:latest"
 .PHONY: docker-build
 
 ## docker-tag: Tag the docker image so that it can be pushed to Scaleway.
 docker-tag:
 	@echo "--> Tagging the docker image so that it can be pushed to Scaleway"
-	@docker tag celestiaorg/supply rg.fr-par.scw.cloud/supply/supply:latest
+	@docker tag sysrex/ipinfo:latest
 .PHONY: docker-tag
 
 ## docker-push: Push the docker image to Scaleway. Requires the user to be logged in to Scaleway.
 docker-push:
 	@echo "--> Pushing the docker image to Scaleway"
-	@docker push rg.fr-par.scw.cloud/supply/supply:latest
+	@docker push sysrex/ipinfo:latest
 .PHONY: docker-push
